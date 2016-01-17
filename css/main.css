@@ -1,17 +1,19 @@
+@font-face { font-family: HelveticaNeue; src: url('../font/HelveticaLT75Bold.ttf'); } 
+
 /*homepage*/
 body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; padding: 0; overflow: hidden; display: none;  }
-.absolute-title { color: #ffffff; font-size: 1.5em; position: absolute; top: 70px; left: 70px; width: 180px; line-height: 1em; letter-spacing: 0.05em; z-index: 6;}
-.big-title { color: #201f1f; font-size: 9em; position: absolute; top: 156px; left: 90px; font-weight: 700; z-index: -1; line-height: 1em;}
+.absolute-title { color: #ffffff; font-size: 1.3em; position: absolute; top: 70px; left: 70px; width: 160px; line-height: 1em; letter-spacing: 0.05em; z-index: 6;}
+.big-title { color: #201f1f; font-size: 9em; position: absolute; top: 156px; left: 100px; font-weight: 700; z-index: -1; line-height: 1em;}
 .nav { background: #ffffff; height: 7px; width: 50px; position: absolute; top: 70px; right: 70px; transition: all 0.5s; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; cursor: pointer; z-index: 6; }
 .nav-turn { transform: rotate(-90deg); transform-origin: top right; -webkit-transform: rotate(-90deg); -webkit-transform-origin: top right; -moz-transform: rotate(-90deg); moz-transform-origin: top right;}
 #my-thumbs-list{ overflow: auto; width: 90%; height: auto; margin: 0 auto; }
 .artists { color: #ff0000; text-transform: uppercase; font-size: 0.6em; margin: 0 auto; text-align: center; position: fixed; margin-top: 350px; padding: 0; letter-spacing: 3px;}
 .artists li { display: inline-block; cursor: pointer; width: 200px; height: 46px;}
 .bar { width: 90%; height: 5px; background: #ffffff; position: absolute; top: 389px; left: 50%; margin-left: -45%;}
-.artist-number { position: absolute; top: 300px; right: 180px; font-size: 9em; color: #fff; display: none; z-index: -1; }
+.artist-number { font-family: HelveticaNeue, Helvetica, sans serif; position: absolute; top: 430px; right: 180px; font-size: 10em; color: #fff; display: none; z-index: -1; }
 .smaller-number { font-size: 0.2em; }
 .credits { text-align: center; position: absolute; bottom: 20px; left: 50%; width: 500px; margin-left: -250px; color: #201f1f; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8em;}
-.credits a { color: #ff0000; text-decoration: none;}
+.credits a { color: #ff0000; text-decoration: none; font-size: 0.1em;}
 .share a { color: #ffffff; text-transform: uppercase; text-decoration: none; position: absolute; bottom: 20px; right: 70px; letter-spacing: 2px; font-size: 0.8em;}
 .artist-bg-left { position: absolute; top: 344px; left: 5%; z-index: 2; pointer-events: none;}
 .artist-bg-right { position: absolute; top: 344px; right: 5%; z-index: 2; pointer-events: none;}
@@ -30,6 +32,14 @@ body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; 
 .about-text { color: #000000; text-align: center; width: 450px; margin: 0 auto; font-size: 0.8em; letter-spacing: 2px; line-height: 1.3em; }
 .about-choose a { color: #000000; text-decoration: none;}
 .about-choose { margin: 50px auto 0 auto; width: 400px; text-align: center; }
+
+/*share page*/
+.share-container { position: fixed; z-index: 5; bottom: 0; right: 0; width: 0vw; height: 0vh; background: #000000; transition: all 0.5s; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; text-align: center; }
+.full-share { width: 100vw; height: 100vh; transition: all 0.5s; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; text-align: center; z-index: 5;}
+.share-gif { margin: 0 auto; text-align: center; margin-top: 85px; }
+.share-container a { color: #ffffff; text-decoration: none;}
+.share-container i { font-size: 3.5em; margin: 30px 20px 0 20px; }
+.share-close { position: absolute; top: 70px; right: 70px; cursor: pointer; font-size: 3em; color: #ffffff;}
 
 /*artist pages*/
 .artists-container, .aurora, .bmth, .bryson, .danny, .gallant, .halsey, .jack, .kygo, .lido, .melanie, .nothing, .pretty, .purity, .raury, .years { display: none;}
@@ -52,7 +62,8 @@ body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; 
 .raury .artist-image { background: url(../img/14_Raury.jpg); }
 .years .artist-image { background: url(../img/15_Years_and_Years.jpg); }
 .list { position: absolute; top: 350px; right: 6%; color: #fff; text-transform: uppercase; cursor: pointer; z-index: 4;}
-.next { position: absolute; top: 420px; right: 6%; color: #fff; text-transform: uppercase; cursor: pointer; z-index: 4;}
+.next { position: absolute; top: 415px; right: 6%; color: #fff; text-transform: uppercase; cursor: pointer; z-index: 4; font-size: 1.7em;}
+.back { position: absolute; top: 415px; right: 9%; color: #fff; text-transform: uppercase; cursor: pointer; z-index: 4; font-size: 1.7em;}
 .divider { position: absolute; top: 395px; right: 6%; z-index: 4; width: 100px; height: 1px; background: #fff;}
 .artist-title { margin-top: 160px; margin-left: 100px; text-transform: uppercase; color: #ff0000; font-size: 2.5em; letter-spacing: 1px; font-weight: bold;}
 .song-title { margin-top: 0px; margin-left: 100px; color: #ffffff; font-size: 1.5em; letter-spacing: 1px;}
@@ -60,7 +71,7 @@ body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; 
 .artist-paragraph a { color: #fff; font-size: 0.6em;}
 .spotify-button { margin-top: 100px; margin-left: 100px; background: #ffffff; color: #ff0000; text-transform: uppercase; text-align: center; height: 40px; width: 190px; border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px; font-size: 0.8em; line-height: 40px;}
 .spotify-button a { text-decoration: none; color: #ff0000;}
-.artist-numeral { position: absolute; bottom: 0px; left: 150px; color: #ff0000; font-size: 28em; z-index: -1;}
+.artist-numeral { font-family: HelveticaNeue, Helvetica, sans serif; position: absolute; bottom: 60px; left: 150px; color: #ff0000; font-size: 28em; z-index: -1;}
 .melanie .artist-numeral { left: 120px;}
 
 /*media queries for mobile, yay!*/
@@ -103,5 +114,6 @@ body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; 
 	.artist-numeral { font-size: 55vw; left: 8vw; bottom: 10vh;}
 	.melanie .artist-numeral { left: 8vw;}
 	.divider { width: 60px; }
+	.back { right: 19%; }
 }
 

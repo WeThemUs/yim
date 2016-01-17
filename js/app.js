@@ -13,6 +13,18 @@ $('.nav').click(function(){
 	$('.about-choose').toggleClass('animated fadeInUp');
 });
 
+// this code controls the opening and closing of the share section
+$('.share a').click(function(){
+	$('.share-container').addClass('full-share');
+	$('.share-gif').attr('src','img/yim_share.gif');
+	$('.nav').css('z-index','3');
+});
+
+$('.share-close').click(function(){
+	$('.share-container').removeClass('full-share');
+	$('.nav').css('z-index','6');
+});
+
 // this code changes the artist number and background text when hovering over each artist name
 $('.artists li').mouseover(function(){
 	$('.big-title').text($(this).text());
@@ -22,7 +34,7 @@ $('.artists li').mouseover(function(){
 
 // this code removes the artist number and artist name when not hovering on any artist name
 $('.artists li').mouseout(function(){
-	$('.big-title').html('Breakthrough<br>Artists of<br>2015');
+	$('.big-title').html('Breakthrough<br>Sounds of<br>2016');
 	$('.big-title').css('top', '156px');
 	$('.artist-number').css('display','none');
 });
@@ -42,6 +54,8 @@ $('.list').click(function(){
 	$(this).addClass('fadeOutUp');
 	$('.next').removeClass('fadeInDown');
 	$('.next').addClass('fadeOutUp');
+	$('.back').removeClass('fadeInDown');
+	$('.back').addClass('fadeOutUp');
 	$('.divider').removeClass('fadeInDown');
 	$('.divider').addClass('fadeOutUp');
 });
@@ -62,6 +76,8 @@ $('.artists').on('click','li',function(){
 	$('.list').addClass('fadeInDown');
 	$('.next').removeClass('fadeOutUp');
 	$('.next').addClass('fadeInDown');	
+	$('.back').removeClass('fadeOutUp');
+	$('.back').addClass('fadeInDown');
 	$('.divider').removeClass('fadeOutUp');
 	$('.divider').addClass('fadeInDown');
 	$('.artist-info').removeClass('fadeOut').addClass('slideInLeft');
@@ -80,7 +96,7 @@ $('.artists li').each(function(index){
 });
 
 // this code determines what profile to show when clicking on the 'next' button
-$('.next').click(function(){
+function nextArtist() {
 	if ($('.aurora').css('display') == 'block') {
 		$('.bmth').css('display', 'block');
 		$('.aurora .red-bg, .aurora .artist-info').css('z-index', '3');
@@ -124,8 +140,8 @@ $('.next').click(function(){
 		$('.gallant .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.danny').css('display', 'none');
-		},1000);	} 
-	else if ($('.gallant').css('display') == 'block') {
+		},1000);	
+	} else if ($('.gallant').css('display') == 'block') {
 		$('.halsey').css('display', 'block');
 		$('.gallant .red-bg, .gallant .artist-info').css('z-index', '3');
 		$('.gallant .artist-image').css('z-index', '2');
@@ -135,8 +151,8 @@ $('.next').click(function(){
 		$('.halsey .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.gallant').css('display', 'none');
-		},1000);	} 
-	else if ($('.halsey').css('display') == 'block') {
+		},1000);
+	} else if ($('.halsey').css('display') == 'block') {
 		$('.jack').css('display', 'block');
 		$('.halsey .red-bg, .halsey .artist-info').css('z-index', '3');
 		$('.halsey .artist-image').css('z-index', '2');
@@ -242,13 +258,191 @@ $('.next').click(function(){
 		$('.years .artist-info').removeClass('slideInLeft').addClass('fadeOut');
 		$('.raury .red-bg, .raury .artist-info').css('z-index', '4');
 		$('.raury .artist-image').css('z-index', '3');
+		$('.aurora .red-bg, .aurora .artist-info').css('z-index', '4');
+		$('.aurora .artist-image').css('z-index', '3');
 		$('.aurora .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.years').css('display', 'none');
 		},1000);
 	}
-});
+};
 
+$('.next').on('click', nextArtist);
+$('.artist-image, .artist-info').on('swipeleft', nextArtist)
+
+
+// this code determines what profile to show when clicking on the 'back' button
+function prevArtist() {
+	if ($('.aurora').css('display') == 'block') {
+		$('.years').css('display', 'block');
+		$('.aurora .red-bg, .aurora .artist-info').css('z-index', '3');
+		$('.aurora .artist-image').css('z-index', '2');
+		$('.aurora .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.years .red-bg, .years .artist-info').css('z-index', '4');
+		$('.years .artist-image').css('z-index', '3');
+		$('.years .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.aurora').css('display', 'none');
+		},1000);
+	} else if ($('.bmth').css('display') == 'block') {
+		$('.aurora').css('display', 'block');
+		$('.bmth .red-bg, .bmth .artist-info').css('z-index', '3');
+		$('.bmth .artist-image').css('z-index', '2');
+		$('.bmth .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.aurora .red-bg, .aurora .artist-info').css('z-index', '4');
+		$('.aurora .artist-image').css('z-index', '3');
+		$('.aurora .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.bmth').css('display', 'none');
+		},1000);
+	} else if ($('.bryson').css('display') == 'block') {
+		$('.bmth').css('display', 'block');
+		$('.bryson .red-bg, .bryson .artist-info').css('z-index', '3');
+		$('.bryson .artist-image').css('z-index', '2');
+		$('.bryson .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.bmth .red-bg, .bmth .artist-info').css('z-index', '4');
+		$('.bmth .artist-image').css('z-index', '3');
+		$('.bmth .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.bryson').css('display', 'none');
+		},1000);
+	} else if ($('.danny').css('display') == 'block') {
+		$('.bryson').css('display', 'block');
+		$('.danny .red-bg, .danny .artist-info').css('z-index', '3');
+		$('.danny .artist-image').css('z-index', '2');
+		$('.danny .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.bryson .red-bg, .bryson .artist-info').css('z-index', '4');
+		$('.bryson .artist-image').css('z-index', '3');
+		$('.bryson .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.danny').css('display', 'none');
+		},1000);
+	} else if ($('.gallant').css('display') == 'block') {
+		$('.danny').css('display', 'block');
+		$('.gallant .red-bg, .gallant .artist-info').css('z-index', '3');
+		$('.gallant .artist-image').css('z-index', '2');
+		$('.gallant .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.danny .red-bg, .danny .artist-info').css('z-index', '4');
+		$('.danny .artist-image').css('z-index', '3');
+		$('.danny .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.gallant').css('display', 'none');
+		},1000);
+	} else if ($('.halsey').css('display') == 'block') {
+		$('.gallant').css('display', 'block');
+		$('.halsey .red-bg, .halsey .artist-info').css('z-index', '3');
+		$('.halsey .artist-image').css('z-index', '2');
+		$('.halsey .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.gallant .red-bg, .gallant .artist-info').css('z-index', '4');
+		$('.gallant .artist-image').css('z-index', '3');
+		$('.gallant .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.halsey').css('display', 'none');
+		},1000);
+	} else if ($('.jack').css('display') == 'block') {
+		$('.halsey').css('display', 'block');
+		$('.jack .red-bg, .jack .artist-info').css('z-index', '3');
+		$('.jack .artist-image').css('z-index', '2');
+		$('.jack .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.halsey .red-bg, .halsey .artist-info').css('z-index', '4');
+		$('.halsey .artist-image').css('z-index', '3');
+		$('.halsey .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.jack').css('display', 'none');
+		},1000);
+	} else if ($('.kygo').css('display') == 'block') {
+		$('.jack').css('display', 'block');
+		$('.kygo .red-bg, .kygo .artist-info').css('z-index', '3');
+		$('.kygo .artist-image').css('z-index', '2');
+		$('.kygo .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.jack .red-bg, .jack .artist-info').css('z-index', '4');
+		$('.jack .artist-image').css('z-index', '3');
+		$('.jack .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.kygo').css('display', 'none');
+		},1000);
+	} else if ($('.lido').css('display') == 'block') {
+		$('.kygo').css('display', 'block');
+		$('.lido .red-bg, .lido .artist-info').css('z-index', '3');
+		$('.lido .artist-image').css('z-index', '2');
+		$('.lido .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.kygo .red-bg, .kygo .artist-info').css('z-index', '4');
+		$('.kygo .artist-image').css('z-index', '3');
+		$('.kygo .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.lido').css('display', 'none');
+		},1000);
+	} else if ($('.melanie').css('display') == 'block') {
+		$('.lido').css('display', 'block');
+		$('.melanie .red-bg, .melanie .artist-info').css('z-index', '3');
+		$('.melanie .artist-image').css('z-index', '2');
+		$('.melanie .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.lido .red-bg, .lido .artist-info').css('z-index', '4');
+		$('.lido .artist-image').css('z-index', '3');
+		$('.lido .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.melanie').css('display', 'none');
+		},1000);
+	} else if ($('.nothing').css('display') == 'block') {
+		$('.melanie').css('display', 'block');
+		$('.nothing .red-bg, .nothing .artist-info').css('z-index', '3');
+		$('.nothing .artist-image').css('z-index', '2');
+		$('.nothing .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.melanie .red-bg, .melanie .artist-info').css('z-index', '4');
+		$('.melanie .artist-image').css('z-index', '3');
+		$('.melanie .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.nothing').css('display', 'none');
+		},1000);
+	} else if ($('.pretty').css('display') == 'block') {
+		$('.nothing').css('display', 'block');
+		$('.pretty .red-bg, .pretty .artist-info').css('z-index', '3');
+		$('.pretty .artist-image').css('z-index', '2');
+		$('.pretty .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.nothing .red-bg, .nothing .artist-info').css('z-index', '4');
+		$('.nothing .artist-image').css('z-index', '3');
+		$('.nothing .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.pretty').css('display', 'none');
+		},1000);
+	} else if ($('.purity').css('display') == 'block') {
+		$('.pretty').css('display', 'block');
+		$('.purity .red-bg, .purity .artist-info').css('z-index', '3');
+		$('.purity .artist-image').css('z-index', '2');
+		$('.purity .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.pretty .red-bg, .pretty .artist-info').css('z-index', '4');
+		$('.pretty .artist-image').css('z-index', '3');
+		$('.pretty .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.purity').css('display', 'none');
+		},1000);
+	} else if ($('.raury').css('display') == 'block') {
+		$('.purity').css('display', 'block');
+		$('.raury .red-bg, .raury .artist-info').css('z-index', '3');
+		$('.raury .artist-image').css('z-index', '2');
+		$('.raury .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.purity .red-bg, .purity .artist-info').css('z-index', '4');
+		$('.purity .artist-image').css('z-index', '3');
+		$('.purity .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.raury').css('display', 'none');
+		},1000);
+	} else if ($('.years').css('display') == 'block') {
+		$('.raury').css('display', 'block');
+		$('.years .red-bg, .years .artist-info').css('z-index', '2');
+		$('.years .artist-image').css('z-index', '2');
+		$('.years .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.raury .red-bg, .raury .artist-info').css('z-index', '4');
+		$('.raury .artist-image').css('z-index', '3');
+		$('.raury .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.years').css('display', 'none');
+		},1000);
+	}
+};
+
+$('.back').on('click', prevArtist);
+$('.artist-image, .artist-info').on('swiperight', prevArtist)
 
 // this code closes other artist pages when opening a new one so they don't overlap
 $('.artists').on('click','li.aurora-label',function(){
@@ -319,7 +513,7 @@ if ( window.innerWidth > 480 ) {
 	        $("#my-thumbs-list").mThumbnailScroller({
 	          axis:"x",
 	          type: "hover-50",
-	          speed: 10
+	          speed: 8
 	        });
 	    });
 	})(jQuery);
