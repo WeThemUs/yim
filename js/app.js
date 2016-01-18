@@ -1,4 +1,4 @@
-var artistNames = ["Aurora","BMTH","Bryson Tiller","Danny Seth","Gallant","Halsey","Jack Garratt","Kygo","Lido","Melanie Martinez","Nothing But Thieves","Pretty Vicious","Purity Ring","Raury","Years and Years"];
+var artistNames = ["Aurora","BMTH","Bryson Tiller","Danny Seth","Gallant","Halsey","Jack Garratt","Alison Wonderland","Lido","Melanie Martinez","Nothing But Thieves","Pretty Vicious","Mura Masa","Raury","Years and Years"];
 
 $(window).load(function(){
 	$('body').css('display','block');
@@ -20,7 +20,7 @@ $('.share a').click(function(){
 	$('.nav').css('z-index','3');
 });
 
-$('.share-close').click(function(){
+$('.share-close, .absolute-title').click(function(){
 	$('.share-container').removeClass('full-share');
 	$('.nav').css('z-index','6');
 });
@@ -40,7 +40,7 @@ $('.artists li').mouseout(function(){
 });
 
 // this code makes the artist page go away when clickin on the 'list' button
-$('.list').click(function(){
+$('.list, .absolute-title').click(function(){
 	$('.artist-info').css('z-index','4');
 	$('.red-bg').css('z-index','4');
 	$('.artist-image').css('z-index','3');
@@ -50,8 +50,8 @@ $('.list').click(function(){
 	$('.artist-image').addClass('fadeOutRight');
 	$('.artist-info').addClass('slideOutLeft');
 	$('.red-bg').addClass('slideOutLeft');
-	$(this).removeClass('fadeInDown');
-	$(this).addClass('fadeOutUp');
+	$('.list').removeClass('fadeInDown');
+	$('.list').addClass('fadeOutUp');
 	$('.next').removeClass('fadeInDown');
 	$('.next').addClass('fadeOutUp');
 	$('.back').removeClass('fadeInDown');
@@ -97,13 +97,24 @@ $('.artists li').each(function(index){
 
 // this code determines what profile to show when clicking on the 'next' button
 function nextArtist() {
-	if ($('.aurora').css('display') == 'block') {
+	if ($('.alison').css('display') == 'block') {
+		$('.aurora').css('display', 'block');
+		$('.alison .red-bg, .alison .artist-info').css('z-index', '3');
+		$('.alison .artist-image').css('z-index', '2');
+		$('.alison .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.years .red-bg, .years .artist-info').css('z-index', '4');
+		$('.years .artist-image').css('z-index', '3');
+		$('.aurora .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.alison').css('display', 'none');
+		},1000);
+	} else if ($('.aurora').css('display') == 'block') {
 		$('.bmth').css('display', 'block');
 		$('.aurora .red-bg, .aurora .artist-info').css('z-index', '3');
 		$('.aurora .artist-image').css('z-index', '2');
 		$('.aurora .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.years .red-bg, .years .artist-info').css('z-index', '4');
-		$('.years .artist-image').css('z-index', '3');
+		$('.alison .red-bg, .alison .artist-info').css('z-index', '4');
+		$('.alison .artist-image').css('z-index', '3');
 		$('.bmth .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.aurora').css('display', 'none');
@@ -129,7 +140,7 @@ function nextArtist() {
 		$('.danny .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.bryson').css('display', 'none');
-		},1000);
+		},1000);	
 	} else if ($('.danny').css('display') == 'block') {
 		$('.gallant').css('display', 'block');
 		$('.danny .red-bg, .danny .artist-info').css('z-index', '3');
@@ -140,7 +151,7 @@ function nextArtist() {
 		$('.gallant .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.danny').css('display', 'none');
-		},1000);	
+		},1000);
 	} else if ($('.gallant').css('display') == 'block') {
 		$('.halsey').css('display', 'block');
 		$('.gallant .red-bg, .gallant .artist-info').css('z-index', '3');
@@ -164,103 +175,92 @@ function nextArtist() {
 			$('.halsey').css('display', 'none');
 		},1000);
 	} else if ($('.jack').css('display') == 'block') {
-		$('.kygo').css('display', 'block');
+		$('.lido').css('display', 'block');
 		$('.jack .red-bg, .jack .artist-info').css('z-index', '3');
 		$('.jack .artist-image').css('z-index', '2');
 		$('.jack .artist-info').removeClass('slideInLeft').addClass('fadeOut');
 		$('.halsey .red-bg, .halsey .artist-info').css('z-index', '4');
 		$('.halsey .artist-image').css('z-index', '3');
-		$('.kygo .artist-info').removeClass('fadeOut').addClass('slideInLeft');
-		setTimeout(function(){
-			$('.jack').css('display', 'none');
-		},1000);
-	} else if ($('.kygo').css('display') == 'block') {
-		$('.lido').css('display', 'block');
-		$('.kygo .red-bg, .kygo .artist-info').css('z-index', '3');
-		$('.kygo .artist-image').css('z-index', '2');
-		$('.kygo .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.jack .red-bg, .jack .artist-info').css('z-index', '4');
-		$('.jack .artist-image').css('z-index', '3');
 		$('.lido .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
-			$('.kygo').css('display', 'none');
+			$('.jack').css('display', 'none');
 		},1000);
 	} else if ($('.lido').css('display') == 'block') {
 		$('.melanie').css('display', 'block');
 		$('.lido .red-bg, .lido .artist-info').css('z-index', '3');
 		$('.lido .artist-image').css('z-index', '2');
 		$('.lido .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.kygo .red-bg, .kygo .artist-info').css('z-index', '4');
-		$('.kygo .artist-image').css('z-index', '3');
+		$('.jack .red-bg, .jack .artist-info').css('z-index', '4');
+		$('.jack .artist-image').css('z-index', '3');
 		$('.melanie .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.lido').css('display', 'none');
 		},1000);
 	} else if ($('.melanie').css('display') == 'block') {
-		$('.nothing').css('display', 'block');
+		$('.mura').css('display', 'block');
 		$('.melanie .red-bg, .melanie .artist-info').css('z-index', '3');
 		$('.melanie .artist-image').css('z-index', '2');
 		$('.melanie .artist-info').removeClass('slideInLeft').addClass('fadeOut');
 		$('.lido .red-bg, .lido .artist-info').css('z-index', '4');
 		$('.lido .artist-image').css('z-index', '3');
-		$('.nothing .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		$('.mura .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.melanie').css('display', 'none');
+		},1000);
+	} else if ($('.mura').css('display') == 'block') {
+		$('.nothing').css('display', 'block');
+		$('.mura .red-bg, .mura .artist-info').css('z-index', '3');
+		$('.mura .artist-image').css('z-index', '2');
+		$('.mura .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.melanie .red-bg, .melanie .artist-info').css('z-index', '4');
+		$('.melanie .artist-image').css('z-index', '3');
+		$('.nothing .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.mura').css('display', 'none');
 		},1000);
 	} else if ($('.nothing').css('display') == 'block') {
 		$('.pretty').css('display', 'block');
 		$('.nothing .red-bg, .nothing .artist-info').css('z-index', '3');
 		$('.nothing .artist-image').css('z-index', '2');
 		$('.nothing .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.melanie .red-bg, .melanie .artist-info').css('z-index', '4');
-		$('.melanie .artist-image').css('z-index', '3');
+		$('.mura .red-bg, .mura .artist-info').css('z-index', '4');
+		$('.mura .artist-image').css('z-index', '3');
 		$('.pretty .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.nothing').css('display', 'none');
 		},1000);
 	} else if ($('.pretty').css('display') == 'block') {
-		$('.purity').css('display', 'block');
+		$('.raury').css('display', 'block');
 		$('.pretty .red-bg, .pretty .artist-info').css('z-index', '3');
 		$('.pretty .artist-image').css('z-index', '2');
 		$('.pretty .artist-info').removeClass('slideInLeft').addClass('fadeOut');
 		$('.nothing .red-bg, .nothing .artist-info').css('z-index', '4');
 		$('.nothing .artist-image').css('z-index', '3');
-		$('.purity .artist-info').removeClass('fadeOut').addClass('slideInLeft');
-		setTimeout(function(){
-			$('.pretty').css('display', 'none');
-		},1000);
-	} else if ($('.purity').css('display') == 'block') {
-		$('.raury').css('display', 'block');
-		$('.purity .red-bg, .purity .artist-info').css('z-index', '3');
-		$('.purity .artist-image').css('z-index', '2');
-		$('.purity .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.pretty .red-bg, .pretty .artist-info').css('z-index', '4');
-		$('.pretty .artist-image').css('z-index', '3');
 		$('.raury .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
-			$('.purity').css('display', 'none');
+			$('.pretty').css('display', 'none');
 		},1000);
 	} else if ($('.raury').css('display') == 'block') {
 		$('.years').css('display', 'block');
 		$('.raury .red-bg, .raury .artist-info').css('z-index', '3');
 		$('.raury .artist-image').css('z-index', '2');
 		$('.raury .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.purity .red-bg, .purity .artist-info').css('z-index', '4');
-		$('.purity .artist-image').css('z-index', '3');
+		$('.pretty .red-bg, .pretty .artist-info').css('z-index', '4');
+		$('.pretty .artist-image').css('z-index', '3');
 		$('.years .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.raury').css('display', 'none');
 		},1000);
 	} else if ($('.years').css('display') == 'block') {
-		$('.aurora').css('display', 'block');
+		$('.alison').css('display', 'block');
 		$('.years .red-bg, .years .artist-info').css('z-index', '2');
 		$('.years .artist-image').css('z-index', '2');
 		$('.years .artist-info').removeClass('slideInLeft').addClass('fadeOut');
 		$('.raury .red-bg, .raury .artist-info').css('z-index', '4');
 		$('.raury .artist-image').css('z-index', '3');
-		$('.aurora .red-bg, .aurora .artist-info').css('z-index', '4');
-		$('.aurora .artist-image').css('z-index', '3');
-		$('.aurora .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		$('.alison .red-bg, .alison .artist-info').css('z-index', '4');
+		$('.alison .artist-image').css('z-index', '3');
+		$('.alison .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.years').css('display', 'none');
 		},1000);
@@ -273,14 +273,25 @@ $('.artist-image, .artist-info').on('swipeleft', nextArtist)
 
 // this code determines what profile to show when clicking on the 'back' button
 function prevArtist() {
-	if ($('.aurora').css('display') == 'block') {
+	if ($('.alison').css('display') == 'block') {
 		$('.years').css('display', 'block');
-		$('.aurora .red-bg, .aurora .artist-info').css('z-index', '3');
-		$('.aurora .artist-image').css('z-index', '2');
-		$('.aurora .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.alison .red-bg, .alison .artist-info').css('z-index', '3');
+		$('.alison .artist-image').css('z-index', '2');
+		$('.alison .artist-info').removeClass('slideInLeft').addClass('fadeOut');
 		$('.years .red-bg, .years .artist-info').css('z-index', '4');
 		$('.years .artist-image').css('z-index', '3');
 		$('.years .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.alison').css('display', 'none');
+		},1000);
+	} else if ($('.aurora').css('display') == 'block') {
+		$('.alison').css('display', 'block');
+		$('.aurora .red-bg, .aurora .artist-info').css('z-index', '3');
+		$('.aurora .artist-image').css('z-index', '2');
+		$('.aurora .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.alison .red-bg, .alison .artist-info').css('z-index', '4');
+		$('.alison .artist-image').css('z-index', '3');
+		$('.alison .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.aurora').css('display', 'none');
 		},1000);
@@ -350,25 +361,14 @@ function prevArtist() {
 		setTimeout(function(){
 			$('.jack').css('display', 'none');
 		},1000);
-	} else if ($('.kygo').css('display') == 'block') {
-		$('.jack').css('display', 'block');
-		$('.kygo .red-bg, .kygo .artist-info').css('z-index', '3');
-		$('.kygo .artist-image').css('z-index', '2');
-		$('.kygo .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.jack .red-bg, .jack .artist-info').css('z-index', '4');
-		$('.jack .artist-image').css('z-index', '3');
-		$('.jack .artist-info').removeClass('fadeOut').addClass('slideInLeft');
-		setTimeout(function(){
-			$('.kygo').css('display', 'none');
-		},1000);
 	} else if ($('.lido').css('display') == 'block') {
-		$('.kygo').css('display', 'block');
+		$('.jack').css('display', 'block');
 		$('.lido .red-bg, .lido .artist-info').css('z-index', '3');
 		$('.lido .artist-image').css('z-index', '2');
 		$('.lido .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.kygo .red-bg, .kygo .artist-info').css('z-index', '4');
-		$('.kygo .artist-image').css('z-index', '3');
-		$('.kygo .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		$('.jack .red-bg, .jack .artist-info').css('z-index', '4');
+		$('.jack .artist-image').css('z-index', '3');
+		$('.jack .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.lido').css('display', 'none');
 		},1000);
@@ -383,14 +383,25 @@ function prevArtist() {
 		setTimeout(function(){
 			$('.melanie').css('display', 'none');
 		},1000);
-	} else if ($('.nothing').css('display') == 'block') {
+	} else if ($('.mura').css('display') == 'block') {
 		$('.melanie').css('display', 'block');
-		$('.nothing .red-bg, .nothing .artist-info').css('z-index', '3');
-		$('.nothing .artist-image').css('z-index', '2');
-		$('.nothing .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.mura .red-bg, .mura .artist-info').css('z-index', '3');
+		$('.mura .artist-image').css('z-index', '2');
+		$('.mura .artist-info').removeClass('slideInLeft').addClass('fadeOut');
 		$('.melanie .red-bg, .melanie .artist-info').css('z-index', '4');
 		$('.melanie .artist-image').css('z-index', '3');
 		$('.melanie .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		setTimeout(function(){
+			$('.mura').css('display', 'none');
+		},1000);
+	} else if ($('.nothing').css('display') == 'block') {
+		$('.mura').css('display', 'block');
+		$('.nothing .red-bg, .nothing .artist-info').css('z-index', '3');
+		$('.nothing .artist-image').css('z-index', '2');
+		$('.nothing .artist-info').removeClass('slideInLeft').addClass('fadeOut');
+		$('.mura .red-bg, .mura .artist-info').css('z-index', '4');
+		$('.mura .artist-image').css('z-index', '3');
+		$('.mura .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.nothing').css('display', 'none');
 		},1000);
@@ -405,25 +416,14 @@ function prevArtist() {
 		setTimeout(function(){
 			$('.pretty').css('display', 'none');
 		},1000);
-	} else if ($('.purity').css('display') == 'block') {
-		$('.pretty').css('display', 'block');
-		$('.purity .red-bg, .purity .artist-info').css('z-index', '3');
-		$('.purity .artist-image').css('z-index', '2');
-		$('.purity .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.pretty .red-bg, .pretty .artist-info').css('z-index', '4');
-		$('.pretty .artist-image').css('z-index', '3');
-		$('.pretty .artist-info').removeClass('fadeOut').addClass('slideInLeft');
-		setTimeout(function(){
-			$('.purity').css('display', 'none');
-		},1000);
 	} else if ($('.raury').css('display') == 'block') {
-		$('.purity').css('display', 'block');
+		$('.pretty').css('display', 'block');
 		$('.raury .red-bg, .raury .artist-info').css('z-index', '3');
 		$('.raury .artist-image').css('z-index', '2');
 		$('.raury .artist-info').removeClass('slideInLeft').addClass('fadeOut');
-		$('.purity .red-bg, .purity .artist-info').css('z-index', '4');
-		$('.purity .artist-image').css('z-index', '3');
-		$('.purity .artist-info').removeClass('fadeOut').addClass('slideInLeft');
+		$('.pretty .red-bg, .pretty .artist-info').css('z-index', '4');
+		$('.pretty .artist-image').css('z-index', '3');
+		$('.pretty .artist-info').removeClass('fadeOut').addClass('slideInLeft');
 		setTimeout(function(){
 			$('.raury').css('display', 'none');
 		},1000);
@@ -445,6 +445,10 @@ $('.back').on('click', prevArtist);
 $('.artist-image, .artist-info').on('swiperight', prevArtist)
 
 // this code closes other artist pages when opening a new one so they don't overlap
+$('.artists').on('click','li.alison-label',function(){
+	$('.alison').css('display','block');
+	$('.artist-page').not('.alison').css('display','none');
+});
 $('.artists').on('click','li.aurora-label',function(){
 	$('.aurora').css('display','block');
 	$('.artist-page').not('.aurora').css('display','none');
@@ -473,10 +477,6 @@ $('.artists').on('click','li.jack-label',function(){
 	$('.jack').css('display','block');
 	$('.artist-page').not('.jack').css('display','none');
 });
-$('.artists').on('click','li.kygo-label',function(){
-	$('.kygo').css('display','block');
-	$('.artist-page').not('.kygo').css('display','none');
-});
 $('.artists').on('click','li.lido-label',function(){
 	$('.lido').css('display','block');
 	$('.artist-page').not('.lido').css('display','none');
@@ -485,6 +485,10 @@ $('.artists').on('click','li.melanie-label',function(){
 	$('.melanie').css('display','block');
 	$('.artist-page').not('.melanie').css('display','none');
 });
+$('.artists').on('click','li.mura-label',function(){
+	$('.mura').css('display','block');
+	$('.artist-page').not('.mura').css('display','none');
+});
 $('.artists').on('click','li.nothing-label',function(){
 	$('.nothing').css('display','block');
 	$('.artist-page').not('.nothing').css('display','none');
@@ -492,10 +496,6 @@ $('.artists').on('click','li.nothing-label',function(){
 $('.artists').on('click','li.pretty-label',function(){
 	$('.pretty').css('display','block');
 	$('.artist-page').not('.pretty').css('display','none');
-});
-$('.artists').on('click','li.purity-label',function(){
-	$('.purity').css('display','block');
-	$('.artist-page').not('.purity').css('display','none');
 });
 $('.artists').on('click','li.raury-label',function(){
 	$('.raury').css('display','block');
@@ -618,7 +618,7 @@ if (window.innerWidth < 480 ) {
 				$('.trans-bg').css('background-position-x','50%');
 			 } else if ($('.big-title').text() == artistNames[7]) {
 				$('.trans-bg').css('display','block');
-				$('.trans-bg').css('background',$('.kygo .artist-image').css('background'));
+				$('.trans-bg').css('background',$('.alison .artist-image').css('background'));
 				$('.trans-bg').css('background-size','cover');
 				$('.trans-bg').css('background-position-x','50%');
 			 } else if ($('.big-title').text() == artistNames[8]) {
@@ -643,7 +643,7 @@ if (window.innerWidth < 480 ) {
 				$('.trans-bg').css('background-position-x','50%');
 			 } else if ($('.big-title').text() == artistNames[12]) {
 				$('.trans-bg').css('display','block');
-				$('.trans-bg').css('background',$('.purity .artist-image').css('background'));
+				$('.trans-bg').css('background',$('.mura .artist-image').css('background'));
 				$('.trans-bg').css('background-size','cover');
 				$('.trans-bg').css('background-position-x','50%');
 			 } else if ($('.big-title').text() == artistNames[13]) {
