@@ -1,4 +1,4 @@
-@font-face { font-family: HelveticaNeue; src: url('../font/HelveticaLT75Bold.ttf'); } 
+@font-face { font-family: HelveticaNeue; src: url('../font/HelveticaLT75Bold.ttf'); }
 
 /*homepage*/
 body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; padding: 0; overflow: hidden; display: none;  }
@@ -7,7 +7,7 @@ body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; 
 .nav { background: #ffffff; height: 7px; width: 50px; position: absolute; top: 70px; right: 70px; transition: all 0.5s; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; cursor: pointer; z-index: 6; }
 .nav-turn { transform: rotate(-90deg); transform-origin: top right; -webkit-transform: rotate(-90deg); -webkit-transform-origin: top right; -moz-transform: rotate(-90deg); moz-transform-origin: top right;}
 #my-thumbs-list{ overflow: auto; width: 90%; height: auto; margin: 0 auto; }
-.artists { color: #ff0000; text-transform: uppercase; font-size: 0.6em; margin: 0 auto; text-align: center; position: fixed; margin-top: 350px; padding: 0; letter-spacing: 3px;}
+.artists { color: #fff700; text-transform: uppercase; font-size: 0.6em; margin: 0 auto; text-align: center; position: fixed; margin-top: 350px; padding: 0; letter-spacing: 3px;}
 .artists li { display: inline-block; cursor: pointer; width: 200px; height: 46px;}
 .bar { width: 90%; height: 5px; background: #ffffff; position: absolute; top: 389px; left: 50%; margin-left: -45%;}
 .artist-number { font-family: HelveticaNeue, Helvetica, sans serif; position: absolute; top: 430px; right: 180px; font-size: 10em; color: #fff; display: none; z-index: -1; }
@@ -65,7 +65,7 @@ body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; 
 .next { position: absolute; top: 415px; right: 6%; color: #fff; text-transform: uppercase; cursor: pointer; z-index: 4; font-size: 1.7em;}
 .back { position: absolute; top: 415px; right: 9%; color: #fff; text-transform: uppercase; cursor: pointer; z-index: 4; font-size: 1.7em;}
 .divider { position: absolute; top: 395px; right: 6%; z-index: 4; width: 100px; height: 1px; background: #fff;}
-.artist-title { margin-top: 160px; margin-left: 100px; text-transform: uppercase; color: #ff0000; font-size: 2.5em; letter-spacing: 1px; font-weight: bold;}
+.artist-title {margin-top: 200px; margin-left: 100px; text-transform: uppercase; color: #ff0000; font-size: 2.5em; letter-spacing: 1px; font-weight: bold; line-height: 1em;}
 .song-title { margin-top: 0px; margin-left: 100px; color: #ffffff; font-size: 1.5em; letter-spacing: 1px;}
 .artist-paragraph { margin-top: 20px; margin-left: 100px; color: #ffffff; font-size: 0.8em; width: 350px; line-height: 1.5em;}
 .artist-paragraph a { color: #fff; font-size: 0.6em;}
@@ -121,4 +121,3 @@ body { background: #000; font-family: Montserrat, Arial, sans-serif; margin: 0; 
 	.divider { width: 60px; }
 	.back { right: 19%; }
 }
-
